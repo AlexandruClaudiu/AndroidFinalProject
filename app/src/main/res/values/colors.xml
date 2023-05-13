@@ -5,4 +5,5 @@
     <color name="mainColor">#DBE2EF</color>
     <color name="secondColor">#AAC4FF</color>
     <color name="topBar">#2B2E4A</color>
+    <color name="cardViewColor">#F0EDD4</color>
 </resources>

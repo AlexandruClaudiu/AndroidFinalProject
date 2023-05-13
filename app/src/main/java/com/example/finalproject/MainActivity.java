@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 if(id == R.id.optionHome){
                     loadFragment(new HomeFragment());
                 } else if(id == R.id.optionAboutUS){
-                    Toast.makeText(MainActivity.this, "AboutUs", Toast.LENGTH_SHORT).show();
+
                 } else if(id == R.id.optionContact){
                     Toast.makeText(MainActivity.this, "Contact", Toast.LENGTH_SHORT).show();
                 } else if(id == R.id.optionShare){
