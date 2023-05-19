@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
     public void setupRecyclerView(){
         recyclerViewTrips.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewTrips.setAdapter(new TripsAdapter(trips));
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment {
         trips.add(trip1);
 
         Trip trip2 = new Trip();
-        trip2.build("Second Trip", "Egypt", "City Break");
+        trip2.build("Second Trip", "Quebec", "City Break");
         trip2.setStartDate("1.03.2022");
         trip2.setEndDate("20.03.2022");
         trip2.setPrice(50.20);

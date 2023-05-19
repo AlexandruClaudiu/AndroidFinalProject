@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".trips.CardInfo">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="127dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="307dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="44dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icon"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="80dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toEndOf="@+id/name"
+
+
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="140dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
+        android:id="@+id/startDate"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripType" />
+
+    <TextView
+        android:id="@+id/tripType"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destination" />
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endDate" />
+
+    <TextView
+        android:id="@+id/destination"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/endDate"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_vertical"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="76dp"
+        android:gravity="center_vertical"
+        android:text="Destination:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/destination"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="Trip Type:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/tripType"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="Price:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="Start date:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/startDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="End date:"
+        app:layout_constraintEnd_toStartOf="@+id/endDate"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="Rating:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/rating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
