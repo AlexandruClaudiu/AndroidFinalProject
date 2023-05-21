@@ -1,9 +1,10 @@
-package com.example.finalproject;
+package com.example.finalproject.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,8 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.finalproject.trips.Trip;
+import com.example.finalproject.MainActivity;
+import com.example.finalproject.R;
+import com.example.finalproject.database.AddTripActivity;
+import com.example.finalproject.database.Trip;
+import com.example.finalproject.database.TripViewModel;
 import com.example.finalproject.trips.TripsAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +27,9 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private List<Trip> trips;
-
     private RecyclerView recyclerViewTrips;
+
+    private TripViewModel tripViewModel;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -34,10 +40,20 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        tripViewModel = new ViewModelProvider(this).get(TripViewModel.class);
 
         View view = inflater.inflate(R.layout.activity_trips, container, false);
+
+        FloatingActionButton fab = view.findViewById(R.id.addFabButton);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AddTripActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerViewTrips = view.findViewById(R.id.recyclerViewTrips);
-        populateTrips();
         setupRecyclerView();
         return view;
     }
@@ -45,31 +61,8 @@ public class HomeFragment extends Fragment {
 
     public void setupRecyclerView(){
         recyclerViewTrips.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewTrips.setAdapter(new TripsAdapter(trips));
-    }
-
-    public void populateTrips(){
-        trips = new ArrayList<>();
-        Trip trip1 = new Trip();
-        trip1.build("First Trip", "Egypt", "City Break");
-        trip1.setStartDate("1.03.2022");
-        trip1.setEndDate("20.03.2022");
-        trip1.setPrice(50.20);
-        trip1.setRating(3.5);
-        trip1.setImageUrl("https://i.imgur.com/ugFnkjQ.jpg");
-        trips.add(trip1);
-
-        Trip trip2 = new Trip();
-        trip2.build("Second Trip", "Quebec", "City Break");
-        trip2.setStartDate("1.03.2022");
-        trip2.setEndDate("20.03.2022");
-        trip2.setPrice(50.20);
-        trip2.setRating(3.5);
-        trip2.setImageUrl("https://i.imgur.com/ugFnkjQ.jpg");
-        trips.add(trip2);
-
-        for(int i = 0; i < trips.size(); i++){
-            Log.e("Trip", trips.get(i).toString());
-        }
+        tripViewModel.getTripListLiveData().observe(getViewLifecycleOwner(), trips-> {
+            recyclerViewTrips.setAdapter(new TripsAdapter(trips));
+        });
     }
 }

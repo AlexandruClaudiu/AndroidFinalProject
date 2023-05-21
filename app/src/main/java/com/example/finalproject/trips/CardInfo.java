@@ -3,6 +3,7 @@ package com.example.finalproject.trips;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -104,18 +105,17 @@ public class CardInfo extends AppCompatActivity {
                                 Picasso.get().load("https://imgur.com/wG6gAuI.jpg").into(weatherIconImageView);
                                 Log.e("Day", "its day");
                             }
-                            Picasso.get().load(bundle.getString("imageUrl")).into(mainImageView);
+                            Uri uri = Uri.parse(bundle.getString("imageUri"));
+                            Picasso.get().load(uri).into(mainImageView);
                         }
                     });
-
                     destinationTextView.setText(bundle.getString("destination"));
                     tripTypeTextView.setText(bundle.getString("tripType"));
-                    priceTextView.setText(String.valueOf(bundle.getDouble("price")) + "€");
+                    priceTextView.setText(bundle.getString("price") + " €");
                     startDateTextView.setText(bundle.getString("startDate"));
                     endDateTextView.setText(bundle.getString("endDate"));
-                    ratingTextView.setText(String.valueOf(bundle.getDouble("rating")) + "/5");
+                    ratingTextView.setText(bundle.getString("rating") + "/5.0");
                     nameTextView.setText(bundle.getString("name"));
-
                 }
             }
         });

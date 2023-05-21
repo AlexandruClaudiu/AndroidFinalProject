@@ -1,28 +1,51 @@
 package com.example.finalproject.trips;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject.HomeFragment;
-import com.example.finalproject.MainActivity;
+
 import com.example.finalproject.R;
+import com.example.finalproject.database.Trip;
+
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
     public List<Trip> trips;
 
+    private static final int REQUEST_OPEN_DOCUMENT = 1;
+
+
+    private Context context;
+
     public TripsAdapter(List<Trip> trips){
         this.trips = trips;
+        if(this.trips == null){
+            Log.e("TripsAdapterConstructor", "E goala varu");
+        }
+        else{
+            Log.e("TripsAdapterConstructor", this.trips.toString());
+        }
     }
 
     @NonNull
@@ -35,10 +58,20 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip currentTrip = trips.get(position);
+
+
+
+
+
+        Uri uri = Uri.parse(currentTrip.getImageUri());
+        String imagePath = uri.getPath();
+        Log.e("UriCast", uri.toString());
         holder.getTextViewName().setText(currentTrip.getName());
-        Picasso.get().load(currentTrip.getImageUrl()).into(holder.getImageViewImage());
+        Picasso.get().load(uri).into(holder.getImageViewImage());
+        //holder.getImageViewImage().setImageURI(uri);
         holder.getTextViewDestination().setText(currentTrip.getDestination());
         holder.getTextViewType().setText(currentTrip.getTripType());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,25 +79,31 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
                 Intent intent = new Intent(v.getContext(), CardInfo.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name", currentTrip.getName());
-                bundle.putString("imageUrl", currentTrip.getImageUrl());
+                bundle.putString("imageUri", currentTrip.getImageUri());
                 bundle.putString("destination", currentTrip.getDestination());
                 bundle.putString("tripType", currentTrip.getTripType());
-                bundle.putDouble("price", currentTrip.getPrice());
+                bundle.putString("price", currentTrip.getPrice());
                 bundle.putString("startDate", currentTrip.getStartDate());
                 bundle.putString("endDate", currentTrip.getEndDate());
-                bundle.putDouble("rating", currentTrip.getRating());
-
-
+                bundle.putString("rating", currentTrip.getRating());
 
                 intent.putExtras(bundle);
                 v.getContext().startActivity(intent);
             }
         });
-
     }
+
 
     @Override
     public int getItemCount() {
+        if(trips == null){
+            trips = new ArrayList<>();
+            return 0;
+        }
         return trips.size();
     }
+
+
+
+
 }

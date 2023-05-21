@@ -10,10 +10,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.example.finalproject.database.AddTripActivity;
+import com.example.finalproject.fragments.HomeFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public DrawerLayout drawerLayout;
     public NavigationView navigationView;
     public Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +42,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer);
-
         drawerLayout.addDrawerListener(toggle);
-
         toggle.syncState();
 
-        
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -58,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
-
-
                 return true;
             }
         });
+        loadFragment(new HomeFragment());
     }
+
 
     @Override
     public void onBackPressed() {
@@ -77,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     private void loadFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-
         ft.add(R.id.container, fragment);
         ft.commit();
     }
