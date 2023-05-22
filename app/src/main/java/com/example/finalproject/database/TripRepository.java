@@ -26,4 +26,10 @@ public class TripRepository {
         });
     }
 
+    void update(Trip trip){
+        TripsDatabase.dbExecutor.execute(()->{
+            tripDao.update(trip);
+        });
+    }
+
 }

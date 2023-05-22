@@ -52,7 +52,7 @@ public class AddTripActivity extends AppCompatActivity {
 
     private RadioButton selectedRadioButton;
 
-
+    public  int IS_ADD_INSERT;
 
 
 
@@ -80,8 +80,20 @@ public class AddTripActivity extends AppCompatActivity {
         ratingBar = findViewById(R.id.ratingBar);
         saveButton = findViewById(R.id.saveButton);
 
+        Bundle bundle = getIntent().getExtras();
+        IS_ADD_INSERT = bundle.getInt("isAddInsert");
 
-
+        if(IS_ADD_INSERT == 2){
+            Uri uri = Uri.parse(bundle.getString("imageUri"));
+            imageUri = uri;
+            nameEditText.setText(bundle.getString("name"));
+            Picasso.get().load(uri).into(imageGalleryView);
+            destinationEditText.setText(bundle.getString("destination"));
+            priceEditText.setText(bundle.getString("price"));
+            startDateButton.setText(bundle.getString("startDate"));
+            endDateButton.setText(bundle.getString("endDate"));
+            ratingBar.setRating(Float.valueOf(bundle.getString("rating")));
+        }
 
 
         pickMedia = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result->{
@@ -115,7 +127,6 @@ public class AddTripActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                //i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("image/*");
                 pickMedia.launch(i);
             }
@@ -126,6 +137,7 @@ public class AddTripActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("IS_ADD_INSERT", String.valueOf(IS_ADD_INSERT));
                 selectedRadioButton = findViewById(radioGroup.getCheckedRadioButtonId());
                 Trip trip = new Trip();
                 trip.build(nameEditText.getText().toString(), destinationEditText.getText().toString(), selectedRadioButton.getText().toString());
@@ -134,7 +146,11 @@ public class AddTripActivity extends AppCompatActivity {
                 trip.setStartDate(startDateButton.getText().toString());
                 trip.setEndDate(startDateButton.getText().toString());
                 trip.setRating(String.valueOf(ratingBar.getRating()));
-                tripViewModel.insert(trip);
+                if(IS_ADD_INSERT == 1){
+                    tripViewModel.insert(trip);
+                } else if(IS_ADD_INSERT == 2){
+                    tripViewModel.update(trip);
+                }
                 openMainActivity();
             }
         });

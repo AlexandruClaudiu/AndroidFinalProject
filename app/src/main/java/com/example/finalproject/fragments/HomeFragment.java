@@ -50,6 +50,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddTripActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("isAddInsert", 1);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

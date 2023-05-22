@@ -19,7 +19,6 @@ public interface TripDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Trip trip);
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(Trip trip);
-
 }
