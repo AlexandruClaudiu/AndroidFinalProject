@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,9 +61,9 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip currentTrip = trips.get(position);
 
-
-
-
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            Log.e("Este Permis?", String.valueOf(Environment.isExternalStorageManager()));
+//        }
 
         Uri uri = Uri.parse(currentTrip.getImageUri());
         String imagePath = uri.getPath();

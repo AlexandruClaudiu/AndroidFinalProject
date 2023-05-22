@@ -6,11 +6,15 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,6 +29,7 @@ import android.widget.RadioGroup;
 import android.widget.RatingBar;
 
 import com.example.finalproject.MainActivity;
+
 import com.example.finalproject.R;
 import com.example.finalproject.fragments.HomeFragment;
 import com.squareup.picasso.Picasso;
@@ -49,6 +54,8 @@ public class AddTripActivity extends AppCompatActivity {
 
 
 
+
+
     TripViewModel tripViewModel;
     ActivityResultLauncher<Intent> pickMedia;
 
@@ -59,6 +66,8 @@ public class AddTripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_trip);
+
+
 
         startDateButton = findViewById(R.id.startDatePick);
         endDateButton = findViewById(R.id.endDatePick);
@@ -74,15 +83,17 @@ public class AddTripActivity extends AppCompatActivity {
 
 
 
+
         pickMedia = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result->{
-           if(result.getResultCode() == Activity.RESULT_OK){
-               Intent data = result.getData();
-               if (data != null && data.getData() != null) {
-                   imageUri = data.getData();
-                   Log.e("ImageUriDinAdd", imageUri.toString());
-                   Picasso.get().load(imageUri).into(imageGalleryView);
-               }
-           }
+            if(result.getResultCode() == Activity.RESULT_OK){
+                Intent data = result.getData();
+                if (data != null && data.getData() != null) {
+                    imageUri = data.getData();
+                    getContentResolver().takePersistableUriPermission(imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    Log.e("ImageUriDinAdd", imageUri.toString());
+                    Picasso.get().load(imageUri).into(imageGalleryView);
+                }
+            }
         });
 
 
@@ -104,8 +115,8 @@ public class AddTripActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                //i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("image/*");
-                i.setAction(Intent.ACTION_GET_CONTENT);
                 pickMedia.launch(i);
             }
         });
@@ -142,4 +153,8 @@ public class AddTripActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
+
+
 }
