@@ -148,8 +148,11 @@ public class AddTripActivity extends AppCompatActivity {
                 trip.setRating(String.valueOf(ratingBar.getRating()));
                 if(IS_ADD_INSERT == 1){
                     tripViewModel.insert(trip);
+                    Log.e("Am folosit:", "ADD");
                 } else if(IS_ADD_INSERT == 2){
+                    trip.setId(bundle.getInt("id"));
                     tripViewModel.update(trip);
+                    Log.e("Am folosit:", "UPDATE");
                 }
                 openMainActivity();
             }

@@ -22,4 +22,5 @@ public class TripViewModel extends AndroidViewModel {
         tripRepository.insert(trip);
     }
     public void update(Trip trip) {tripRepository.update(trip);}
+    public void delete(Trip trip) {tripRepository.delete(trip);}
 }

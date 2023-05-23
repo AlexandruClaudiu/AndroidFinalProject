@@ -71,6 +71,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
                 Intent intent = new Intent(v.getContext(), CardInfo.class);
                 Bundle bundle = new Bundle();
                 attachToBundleTrips(bundle, currentTrip);
+                bundle.putInt("id", currentTrip.getId());
                 intent.putExtras(bundle);
                 v.getContext().startActivity(intent);
             }
@@ -82,6 +83,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
                 Intent intent = new Intent(v.getContext(), AddTripActivity.class);
                 Bundle bundle = new Bundle();
                 attachToBundleTrips(bundle, currentTrip);
+                bundle.putInt("id", currentTrip.getId());
                 bundle.putInt("isAddInsert", 2);
                 intent.putExtras(bundle);
                 v.getContext().startActivity(intent);
@@ -109,6 +111,10 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
         if(trips == null){
             trips = new ArrayList<>();
             return 0;
+        }
+
+        for(int i = 0; i < trips.size(); i++){
+            Log.e("Id-ul este:",String.valueOf(trips.get(i).getId()));
         }
         return trips.size();
     }

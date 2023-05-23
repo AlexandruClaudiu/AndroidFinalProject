@@ -10,8 +10,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "trips")
 public class Trip {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
+    private int id;
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "destination")
@@ -40,6 +41,14 @@ public class Trip {
         this.endDate = null;
         this.rating = null;
         this.imageUri = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

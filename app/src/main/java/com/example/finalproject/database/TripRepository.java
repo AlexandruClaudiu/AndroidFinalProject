@@ -32,4 +32,10 @@ public class TripRepository {
         });
     }
 
+    void delete(Trip trip){
+        TripsDatabase.dbExecutor.execute(()->{
+            tripDao.delete(trip);
+        });
+    }
+
 }

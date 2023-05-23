@@ -21,4 +21,7 @@ public interface TripDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(Trip trip);
+
+    @Delete
+    void delete(Trip trip);
 }
