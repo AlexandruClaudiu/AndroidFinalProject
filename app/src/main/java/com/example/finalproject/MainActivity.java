@@ -10,15 +10,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.finalproject.database.AddTripActivity;
-import com.example.finalproject.fragments.HomeFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.finalproject.fragments.AllTripsFragment;
+import com.example.finalproject.fragments.NormalTripsFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if(id == R.id.optionHome){
-                    loadFragment(new HomeFragment());
+                    loadFragment(new AllTripsFragment());
                 } else if(id == R.id.optionAboutUS){
 
                 } else if(id == R.id.optionContact){
@@ -58,12 +54,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if(id == R.id.optionShare){
                     Toast.makeText(MainActivity.this, "Share", Toast.LENGTH_SHORT).show();
                 }
-
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
-        loadFragment(new HomeFragment());
     }
 
 

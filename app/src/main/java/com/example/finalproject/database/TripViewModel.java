@@ -17,7 +17,15 @@ public class TripViewModel extends AndroidViewModel {
         tripRepository = new TripRepository(application);
         tripListLiveData = tripRepository.getAllTrips();
     }
-    public LiveData<List<Trip>> getTripListLiveData(){return tripListLiveData;}
+    public LiveData<List<Trip>> getTripListLiveData(){
+        tripListLiveData = tripRepository.getAllTrips();
+        return tripListLiveData;
+    }
+    public LiveData<List<Trip>> getTripFavoriteListLiveData(){
+        tripListLiveData = tripRepository.getFavoriteTrips();
+        return tripListLiveData;
+    }
+
     public void insert(Trip trip){
         tripRepository.insert(trip);
     }

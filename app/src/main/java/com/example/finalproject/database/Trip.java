@@ -29,6 +29,8 @@ public class Trip {
     private String rating;
     @ColumnInfo(name = "imageUri")
     private String imageUri;
+    @ColumnInfo(name = "isFavorite")
+    private Boolean isFavorite;
 
     public Trip(){}
 
@@ -41,6 +43,15 @@ public class Trip {
         this.endDate = null;
         this.rating = null;
         this.imageUri = null;
+        this.isFavorite = false;
+    }
+
+    public Boolean getFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        isFavorite = favorite;
     }
 
     public int getId() {
@@ -63,8 +74,6 @@ public class Trip {
         this.tripType = tripType;
     }
 
-
-
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
@@ -72,8 +81,6 @@ public class Trip {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-
-
 
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
@@ -122,14 +129,16 @@ public class Trip {
     @Override
     public String toString() {
         return "Trip{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", destination='" + destination + '\'' +
                 ", tripType='" + tripType + '\'' +
-                ", price=" + price +
+                ", price='" + price + '\'' +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
-                ", rating=" + rating +
+                ", rating='" + rating + '\'' +
                 ", imageUri='" + imageUri + '\'' +
+                ", isFavorite=" + isFavorite +
                 '}';
     }
 }

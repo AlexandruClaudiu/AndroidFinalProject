@@ -16,6 +16,9 @@ public interface TripDao {
     @Query("SELECT * FROM trips")
     LiveData<List<Trip>> getAllTrips();
 
+    @Query("SELECT * FROM trips WHERE isFavorite = 1")
+    LiveData<List<Trip>> getFavoriteTrips();
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Trip trip);
 

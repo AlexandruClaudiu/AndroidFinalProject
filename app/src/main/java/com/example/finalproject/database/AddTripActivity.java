@@ -3,21 +3,15 @@ package com.example.finalproject.database;
 
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +25,8 @@ import android.widget.RatingBar;
 import com.example.finalproject.MainActivity;
 
 import com.example.finalproject.R;
-import com.example.finalproject.fragments.HomeFragment;
+import com.example.finalproject.fragments.AllTripsFragment;
 import com.squareup.picasso.Picasso;
-
-import retrofit2.http.Url;
 
 public class AddTripActivity extends AppCompatActivity {
 
@@ -154,7 +146,7 @@ public class AddTripActivity extends AppCompatActivity {
                     tripViewModel.update(trip);
                     Log.e("Am folosit:", "UPDATE");
                 }
-                openMainActivity();
+                openAllTripsFragment();
             }
         });
     }
@@ -168,8 +160,8 @@ public class AddTripActivity extends AppCompatActivity {
         }, 2023, 0, 15);
         dialog.show();
     }
-    private void openMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+    private void openAllTripsFragment(){
+        Intent intent = new Intent(this, AllTripsFragment.class);
         startActivity(intent);
     }
 

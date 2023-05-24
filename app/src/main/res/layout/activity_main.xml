@@ -29,9 +29,4 @@
         app:menu="@menu/navigation_items"
 
         />
-
-
-
-
-
 </androidx.drawerlayout.widget.DrawerLayout>

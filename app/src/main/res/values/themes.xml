@@ -6,5 +6,11 @@
         <item name="android:statusBarColor">@color/topBar</item>
     </style>
 
+    <style name="MyBottomNavigationView.TextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/merriweather_italic</item>
+    </style>
+
+
     <style name="Theme.FinalProject" parent="Base.Theme.FinalProject" />
 </resources>

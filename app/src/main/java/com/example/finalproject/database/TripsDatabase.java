@@ -20,6 +20,7 @@ public abstract class TripsDatabase extends RoomDatabase {
         if(INSTANCE == null){
             synchronized (TripsDatabase.class){
                 if(INSTANCE == null){
+                    //context.getApplicationContext().deleteDatabase("trips");
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             TripsDatabase.class, "trips").build();
                 }

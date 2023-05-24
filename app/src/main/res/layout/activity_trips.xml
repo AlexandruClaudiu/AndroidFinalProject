@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.HomeFragment"
+    tools:context=".fragments.NormalTripsFragment"
     >
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,6 +25,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewTrips"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_add" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.finalproject.trips;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,12 +16,15 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private TextView textViewDestination;
     private TextView textViewType;
 
+    private Button addToFavoriteButton;
+
     public TripViewHolder(@NonNull View cardView){
         super(cardView);
         textViewName = cardView.findViewById(R.id.name);
         imageViewImage = cardView.findViewById(R.id.image);
         textViewDestination = cardView.findViewById(R.id.destination);
         textViewType = cardView.findViewById(R.id.type);
+        addToFavoriteButton = cardView.findViewById(R.id.addToFavoriteButton);
     }
 
     public TextView getTextViewName() {
@@ -38,4 +42,6 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     public TextView getTextViewType() {
         return textViewType;
     }
+
+    public Button getAddToFavoriteButton(){return addToFavoriteButton;}
 }

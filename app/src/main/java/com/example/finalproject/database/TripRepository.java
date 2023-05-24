@@ -19,6 +19,12 @@ public class TripRepository {
         return tripDao.getAllTrips();
     }
 
+    LiveData<List<Trip>> getFavoriteTrips(){
+        return tripDao.getFavoriteTrips();
+    }
+
+
+
     void insert(Trip trip){
         Log.e("Din repository", "Cica merge si aici");
         TripsDatabase.dbExecutor.execute(()->{

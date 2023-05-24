@@ -8,43 +8,41 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 import com.example.finalproject.database.AddTripActivity;
-import com.example.finalproject.database.Trip;
 import com.example.finalproject.database.TripViewModel;
 import com.example.finalproject.trips.TripsAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class HomeFragment extends Fragment {
+public class NormalTripsFragment extends Fragment {
 
     private RecyclerView recyclerViewTrips;
-
     private TripViewModel tripViewModel;
+    private FloatingActionButton fab;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+
+    public NormalTripsFragment() {}
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+
 
         tripViewModel = new ViewModelProvider(this).get(TripViewModel.class);
 
         View view = inflater.inflate(R.layout.activity_trips, container, false);
 
-        FloatingActionButton fab = view.findViewById(R.id.addFabButton);
+        fab = view.findViewById(R.id.addFabButton);
+
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +63,7 @@ public class HomeFragment extends Fragment {
     public void setupRecyclerView(){
         recyclerViewTrips.setLayoutManager(new LinearLayoutManager(getContext()));
         tripViewModel.getTripListLiveData().observe(getViewLifecycleOwner(), trips-> {
-            recyclerViewTrips.setAdapter(new TripsAdapter(trips));
+            recyclerViewTrips.setAdapter(new TripsAdapter(trips, tripViewModel));
         });
     }
 }

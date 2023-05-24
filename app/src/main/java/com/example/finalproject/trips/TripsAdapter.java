@@ -18,6 +18,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -25,6 +27,7 @@ import com.example.finalproject.R;
 import com.example.finalproject.database.AddTripActivity;
 import com.example.finalproject.database.Trip;
 
+import com.example.finalproject.database.TripViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -36,8 +39,11 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
 
     public List<Trip> trips;
 
-    public TripsAdapter(List<Trip> trips){
+    TripViewModel tripViewModel;
+
+    public TripsAdapter(List<Trip> trips, TripViewModel tripViewModel){
         this.trips = trips;
+        this.tripViewModel = tripViewModel;
         if(this.trips == null){
             Log.e("TripsAdapterConstructor", "E goala varu");
         }
@@ -63,6 +69,19 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
         Picasso.get().load(uri).into(holder.getImageViewImage());
         holder.getTextViewDestination().setText(currentTrip.getDestination());
         holder.getTextViewType().setText(currentTrip.getTripType());
+
+
+        holder.getAddToFavoriteButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentTrip.getFavorite().equals(true)){
+                    currentTrip.setFavorite(false);
+                } else {
+                    currentTrip.setFavorite(true);
+                }
+                tripViewModel.update(currentTrip);
+            }
+        });
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +121,6 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
         bundle.putString("endDate", currentTrip.getEndDate());
         bundle.putString("rating", currentTrip.getRating());
     }
-
-
 
 
     @Override
