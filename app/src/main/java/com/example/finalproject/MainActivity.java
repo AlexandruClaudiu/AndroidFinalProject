@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.finalproject.fragments.AboutUsFragment;
 import com.example.finalproject.fragments.AllTripsFragment;
+import com.example.finalproject.fragments.ContactFragment;
 import com.example.finalproject.fragments.NormalTripsFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
+        loadFragment(new AllTripsFragment());
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -48,11 +50,16 @@ public class MainActivity extends AppCompatActivity {
                 if(id == R.id.optionHome){
                     loadFragment(new AllTripsFragment());
                 } else if(id == R.id.optionAboutUS){
-
+                    loadFragment(new AboutUsFragment());
                 } else if(id == R.id.optionContact){
-                    Toast.makeText(MainActivity.this, "Contact", Toast.LENGTH_SHORT).show();
+                    loadFragment(new ContactFragment());
                 } else if(id == R.id.optionShare){
-                    Toast.makeText(MainActivity.this, "Share", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.putExtra(Intent.EXTRA_TEXT, "Hi my name is Claudiu, and I'm using Tournal. You can use this app too by accessing https://www.torunal.com!");
+                    intent.setType("text/plain");
+                    Intent shareIntent = Intent.createChooser(intent, null);
+                    startActivity(shareIntent);
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -73,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.container, fragment);
+        ft.replace(R.id.container, fragment);
         ft.commit();
     }
 }

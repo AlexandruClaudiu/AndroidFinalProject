@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +21,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,10 +71,19 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
         Uri uri = Uri.parse(currentTrip.getImageUri());
         Log.e("UriCast", uri.toString());
         holder.getTextViewName().setText(currentTrip.getName());
-        Picasso.get().load(uri).into(holder.getImageViewImage());
+        Picasso.get().load(uri).resize(1920, 1080).into(holder.getImageViewImage());
         holder.getTextViewDestination().setText(currentTrip.getDestination());
         holder.getTextViewType().setText(currentTrip.getTripType());
+        holder.getRatingBar().setRating(Float.valueOf(currentTrip.getRating()));
 
+        if(currentTrip.getFavorite().equals(false)){
+            Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.add_to_favorite_empty_ic);
+            holder.getAddToFavoriteButton().setBackground(drawable);
+        }else if(currentTrip.getFavorite().equals(true)){
+            Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.add_to_favorite_full_ic);
+            drawable.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+            holder.getAddToFavoriteButton().setBackground(drawable);
+        }
 
         holder.getAddToFavoriteButton().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +135,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
         bundle.putString("endDate", currentTrip.getEndDate());
         bundle.putString("rating", currentTrip.getRating());
     }
+
 
 
     @Override

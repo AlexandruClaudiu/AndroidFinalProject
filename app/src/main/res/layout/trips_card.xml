@@ -10,7 +10,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         app:strokeColor="@color/black"
         app:strokeWidth="2.5dp"
         app:cardCornerRadius="0dp"
@@ -19,70 +19,77 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardViewColor"
-            >
+            android:background="@color/cardViewColor">
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/merriweather_bold"
                 android:text="Trip number One"
-                app:layout_constraintBottom_toTopOf="@+id/image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="18sp"
                 />
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="350dp"
-                android:layout_height="100dp"
+                android:layout_width="155dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.262"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.36"
-                android:scaleType="fitStart"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/destination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/merriweather_bold"
                 android:text="Egypt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image"
-                />
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <TextView
                 android:id="@+id/type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/merriweather_bold"
                 android:text="City Break"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/destination" />
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/destination"
+                app:layout_constraintVertical_bias="0.188"
+
+                />
 
             <Button
                 android:id="@+id/addToFavoriteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="44dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/add_to_favorite_empty_ic"
+                />
+
+            <RatingBar
+                android:id="@+id/ratingBarCard"
+                android:layout_width="245dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image"
-                app:layout_constraintVertical_bias="0.529" />
+                android:rating="0"
+                android:isIndicator="true"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

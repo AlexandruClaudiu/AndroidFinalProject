@@ -3,6 +3,7 @@ package com.example.finalproject.trips;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private TextView textViewDestination;
     private TextView textViewType;
 
+    private RatingBar ratingBar;
+
     private Button addToFavoriteButton;
 
     public TripViewHolder(@NonNull View cardView){
@@ -25,6 +28,7 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         textViewDestination = cardView.findViewById(R.id.destination);
         textViewType = cardView.findViewById(R.id.type);
         addToFavoriteButton = cardView.findViewById(R.id.addToFavoriteButton);
+        ratingBar = cardView.findViewById(R.id.ratingBarCard);
     }
 
     public TextView getTextViewName() {
@@ -44,4 +48,8 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     }
 
     public Button getAddToFavoriteButton(){return addToFavoriteButton;}
+
+    public RatingBar getRatingBar() {
+        return ratingBar;
+    }
 }

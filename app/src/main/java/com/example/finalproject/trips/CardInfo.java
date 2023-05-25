@@ -22,6 +22,7 @@ import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 import com.example.finalproject.database.Trip;
 import com.example.finalproject.database.TripViewModel;
+import com.example.finalproject.fragments.AllTripsFragment;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -125,7 +126,7 @@ public class CardInfo extends AppCompatActivity {
                                 Log.e("Day", "its day");
                             }
                             Uri uri = Uri.parse(bundle.getString("imageUri"));
-                            Picasso.get().load(uri).into(mainImageView);
+                            Picasso.get().load(uri).resize(1280, 720).into(mainImageView);
                         }
                     });
                     thisTrip = new Trip();
@@ -152,8 +153,8 @@ public class CardInfo extends AppCompatActivity {
         });
     }
 
-    private void openMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+    private void openMainFragment(){
+        Intent intent = new Intent(this, AllTripsFragment.class);
         startActivity(intent);
     }
     private Context getThisContext(){
@@ -169,7 +170,7 @@ public class CardInfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 tripViewModel.delete(trip);
-                openMainActivity();
+                openMainFragment();
             }
         });
 

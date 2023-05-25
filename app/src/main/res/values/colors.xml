@@ -6,4 +6,6 @@
     <color name="secondColor">#AAC4FF</color>
     <color name="topBar">#2B2E4A</color>
     <color name="cardViewColor">#F0EDD4</color>
+    <color name="favoriteButton">#FFD700</color>
+    <color name="call">#14af30</color>
 </resources>

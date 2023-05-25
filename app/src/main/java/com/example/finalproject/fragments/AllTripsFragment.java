@@ -1,6 +1,9 @@
 package com.example.finalproject.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +28,7 @@ public class AllTripsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_all_trips, container, false);
         bottomNavigationView = view.findViewById(R.id.bottomNavigation);
+        loadFragment(new NormalTripsFragment());
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -41,8 +45,8 @@ public class AllTripsFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         loadFragment(new NormalTripsFragment());
     }
 
