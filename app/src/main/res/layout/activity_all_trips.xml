@@ -11,7 +11,7 @@
         android:id="@+id/allTripsContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/secondColor"
+        android:background="@color/material_dynamic_neutral90"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_bottom"
+        app:itemIconSize="25dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

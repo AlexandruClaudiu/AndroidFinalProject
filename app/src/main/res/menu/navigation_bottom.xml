@@ -4,9 +4,11 @@
     <item
         android:title="Trips"
         android:id="@+id/tripsMenuButton"
+        android:icon="@drawable/distance"
         />
     <item
         android:title="Favorites"
         android:id="@+id/tripsFavoritesButton"
+        android:icon="@drawable/heart"
         />
 </menu>

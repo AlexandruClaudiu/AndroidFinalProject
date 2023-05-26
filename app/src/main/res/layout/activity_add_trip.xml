@@ -4,17 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".database.AddTripActivity">
+    tools:context=".database.AddTripActivity"
+    android:background="@color/cardViewColor"
+    >
 
     <EditText
         android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="212dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/Primary100"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
+        app:layout_constraintHorizontal_bias="0.709"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +36,11 @@
 
     <EditText
         android:id="@+id/destinationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
         android:layout_marginTop="32dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/Primary100"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +54,7 @@
         android:layout_height="wrap_content"
         android:labelFor="@+id/radioGroup"
         android:text="Trip type"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.055"
@@ -62,7 +69,9 @@
         android:labelFor="@+id/radioGroupTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripTypeRadioGroup">
+        app:layout_constraintTop_toBottomOf="@+id/tripTypeRadioGroup"
+        android:textColor="@color/white"
+        >
 
         <RadioButton
             android:id="@+id/seaRadioButton"
@@ -70,7 +79,8 @@
             android:layout_height="wrap_content"
             android:text="Sea Side"
             tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="443dp" />
+            tools:layout_editor_absoluteY="443dp"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/cityBreakRadioButton"
@@ -78,7 +88,9 @@
             android:layout_height="wrap_content"
             android:text="City Break"
             tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="443dp" />
+            tools:layout_editor_absoluteY="443dp"
+            android:textColor="@color/white"
+            />
 
         <RadioButton
             android:id="@+id/mountainRadioButton"
@@ -86,15 +98,18 @@
             android:layout_height="wrap_content"
             android:text="Mountains"
             tools:layout_editor_absoluteX="136dp"
-            tools:layout_editor_absoluteY="443dp" />
+            tools:layout_editor_absoluteY="443dp"
+            android:textColor="@color/white"/>
 
     </RadioGroup>
 
     <EditText
         android:id="@+id/priceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_height="40dp"
         android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/Primary100"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +125,7 @@
         android:layout_marginEnd="28dp"
         android:background="@color/white"
         android:text="Start Date"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/endDatePick"
         app:layout_constraintTop_toBottomOf="@+id/priceText" />
 
@@ -122,6 +138,7 @@
         android:background="@color/white"
         android:backgroundTint="#32a846"
         android:text="End Date"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceText" />
 
@@ -140,9 +157,10 @@
         android:layout_width="124dp"
         android:layout_height="46dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="52dp"
         android:gravity="center_vertical"
         android:text="Name:"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -154,6 +172,7 @@
         android:layout_marginTop="4dp"
         android:gravity="center_vertical"
         android:text="Price:"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/priceText"
         app:layout_constraintHorizontal_bias="0.395"
@@ -164,12 +183,13 @@
         android:id="@+id/textView13"
         android:layout_width="122dp"
         android:layout_height="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:gravity="center_vertical"
         android:text="Destination:"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/destinationText"
-        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageGalleryView" />
 
@@ -181,22 +201,24 @@
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:text="Rating:"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startDatePick"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="73dp"
         android:layout_height="43dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:gravity="center_vertical"
         android:text="Date:"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/startDatePick"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -204,11 +226,13 @@
         android:id="@+id/saveButton"
         android:layout_width="101dp"
         android:layout_height="57dp"
+        android:layout_marginBottom="16dp"
         android:text="Save"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -217,10 +241,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="68dp"
-        android:background="@color/white"
         android:text="Select image"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        android:background="@color/white"
+        android:backgroundTint="@color/cardViewColor"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".trips.CardInfo"
     android:fillViewport="true"
-
+    android:background="@color/cardViewColor"
     >
 
 
@@ -20,14 +20,15 @@
             android:layout_marginTop="44dp"
             android:gravity="center"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="307dp"
-            android:layout_height="115dp"
+            android:layout_width="341dp"
+            android:layout_height="182dp"
             android:layout_marginTop="44dp"
             android:scaleType="fitStart"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +58,7 @@
             android:layout_marginEnd="12dp"
             android:gravity="center"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.517"
@@ -72,6 +74,7 @@
             android:gravity="center"
             android:text="TextView"
             android:textSize="18sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/icon"
             app:layout_constraintTop_toBottomOf="@+id/time" />
@@ -83,6 +86,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/price" />
@@ -94,6 +98,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tripType" />
@@ -105,6 +110,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/destination" />
@@ -116,6 +122,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/endDate" />
@@ -124,10 +131,11 @@
             android:id="@+id/destination"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image" />
@@ -139,6 +147,7 @@
             android:layout_marginEnd="16dp"
             android:gravity="center_vertical"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/startDate" />
@@ -147,9 +156,10 @@
             android:id="@+id/textView3"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_vertical"
             android:text="Destination:"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/destination"
             app:layout_constraintHorizontal_bias="0.589"
@@ -164,6 +174,7 @@
             android:gravity="center_vertical"
             android:text="Trip Type:"
             android:textSize="18sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/tripType"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -176,6 +187,7 @@
             android:gravity="center_vertical"
             android:text="Price:"
             android:textSize="18sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/price"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -188,6 +200,7 @@
             android:gravity="center_vertical"
             android:text="Start date:"
             android:textSize="18sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/startDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -200,6 +213,7 @@
             android:gravity="center_vertical"
             android:text="End date:"
             android:textSize="18sp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/endDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -211,6 +225,7 @@
             android:layout_marginStart="16dp"
             android:gravity="center_vertical"
             android:text="Rating:"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/rating"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,7 +240,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.207"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:backgroundTint="@color/Primary100"
+            />
 
 
 

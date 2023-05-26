@@ -5,7 +5,14 @@
     <color name="mainColor">#DBE2EF</color>
     <color name="secondColor">#AAC4FF</color>
     <color name="topBar">#2B2E4A</color>
-    <color name="cardViewColor">#F0EDD4</color>
+    <color name="cardViewColor">#57A19B</color>
     <color name="favoriteButton">#FFD700</color>
     <color name="call">#14af30</color>
+
+    <color name="Primary40">#CCD5AE</color>
+    <color name="Secondary40">#FEFAE0</color>
+    <color name="Tertiary40">#D4A374</color>
+    <color name="Primary100">#E9EDC9</color>
+    <color name="Secondary100">#FAEDCD</color>
+
 </resources>
