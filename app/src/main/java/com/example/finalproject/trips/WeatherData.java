@@ -3,7 +3,7 @@ package com.example.finalproject.trips;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WeatherDao {
+public class WeatherData {
 
     @SerializedName("location")
     private Location location;

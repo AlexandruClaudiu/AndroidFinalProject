@@ -1,6 +1,5 @@
 package com.example.finalproject.trips;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,30 +9,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 import com.example.finalproject.database.Trip;
 import com.example.finalproject.database.TripViewModel;
 import com.example.finalproject.fragments.AllTripsFragment;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CardInfo extends AppCompatActivity {
 
@@ -73,43 +66,26 @@ public class CardInfo extends AppCompatActivity {
         deleteButton = findViewById(R.id.deleteButton);
 
         tripViewModel = new ViewModelProvider(this).get(TripViewModel.class);
-        createRequest();
+        //createRequest();
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                returnAlertDialog(thisTrip).show();
-            }
-        });
-    }
-
-    private void createRequest(){
         Bundle bundle = getIntent().getExtras();
         String destination = bundle.getString("destination");
 
-        OkHttpClient client = new OkHttpClient();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.weatherapi.com/v1/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                                .build();
 
-        Request request = new Request.Builder()
-                .url("https://api.weatherapi.com/v1/current.json?key=6cbeb158ad1347e5bb7123238231405&q=" + destination)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
+        WeatherApiService weatherApiService = retrofit.create(WeatherApiService.class);
+        Call<WeatherData> call = weatherApiService.getCurrentWeather("6cbeb158ad1347e5bb7123238231405", destination);
+        call.enqueue(new Callback<WeatherData>() {
             @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e("RequestFailed", "request doesn't work");
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+            public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
                 if(response.isSuccessful()){
-                    ResponseBody responseBody = response.body();
-                    String json = responseBody.string();
-
-                    Gson gson = new Gson();
-                    WeatherDao weatherDao = gson.fromJson(json, WeatherDao.class);
-
-                    String time = weatherDao.getLocation().getTime();
-                    int isDay = weatherDao.getCurrent().getIsDay();
-                    String temperature = weatherDao.getCurrent().getTemperature() + " °C";
+                    WeatherData weatherData = response.body();
+                    String time = weatherData.getLocation().getTime();
+                    int isDay = weatherData.getCurrent().getIsDay();
+                    String temperature = weatherData.getCurrent().getTemperature() + " °C";
 
                     timeTextView.setText(time);
                     temperatureTextView.setText(temperature);
@@ -148,10 +124,29 @@ public class CardInfo extends AppCompatActivity {
                     startDateTextView.setText(thisTrip.getStartDate());
                     endDateTextView.setText(thisTrip.getEndDate());
                     ratingTextView.setText(thisTrip.getRating() + "/5.0");
+
+                } else{
+
                 }
+            }
+
+            @Override
+            public void onFailure(Call<WeatherData> call, Throwable t) {
+
+            }
+        });
+
+
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                returnAlertDialog(thisTrip).show();
             }
         });
     }
+
+
 
     private void openMainFragment(){
         Intent intent = new Intent(this, AllTripsFragment.class);
