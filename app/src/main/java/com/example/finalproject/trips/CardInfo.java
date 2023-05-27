@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.finalproject.MainActivity;
 import com.example.finalproject.R;
 import com.example.finalproject.database.Trip;
 import com.example.finalproject.database.TripViewModel;
@@ -46,7 +47,6 @@ public class CardInfo extends AppCompatActivity {
     private Trip thisTrip;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +64,8 @@ public class CardInfo extends AppCompatActivity {
         endDateTextView = findViewById(R.id.endDate);
         ratingTextView = findViewById(R.id.rating);
         deleteButton = findViewById(R.id.deleteButton);
-
         tripViewModel = new ViewModelProvider(this).get(TripViewModel.class);
-        //createRequest();
+
 
         Bundle bundle = getIntent().getExtras();
         String destination = bundle.getString("destination");
@@ -95,11 +94,9 @@ public class CardInfo extends AppCompatActivity {
                         public void run() {
                             if(isDay == 0){
                                 Picasso.get().load("https://imgur.com/5vyZA2g.jpg").into(weatherIconImageView);
-                                Log.e("Night", "its night");
                             }
                             else {
                                 Picasso.get().load("https://imgur.com/wG6gAuI.jpg").into(weatherIconImageView);
-                                Log.e("Day", "its day");
                             }
                             Uri uri = Uri.parse(bundle.getString("imageUri"));
                             Picasso.get().load(uri).resize(1280, 720).into(mainImageView);
@@ -137,7 +134,6 @@ public class CardInfo extends AppCompatActivity {
         });
 
 
-
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,10 +142,8 @@ public class CardInfo extends AppCompatActivity {
         });
     }
 
-
-
-    private void openMainFragment(){
-        Intent intent = new Intent(this, AllTripsFragment.class);
+    private void openMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     private Context getThisContext(){
@@ -157,7 +151,7 @@ public class CardInfo extends AppCompatActivity {
     }
 
     private AlertDialog returnAlertDialog(Trip trip){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getThisContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getThisContext(), R.style.CustomAlertDialog);
         builder.setCancelable(true);
         builder.setTitle("Are you sure?");
         builder.setMessage("By confirming this you will permanently delete this trip!");
@@ -165,7 +159,7 @@ public class CardInfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 tripViewModel.delete(trip);
-                openMainFragment();
+                openMainActivity();
             }
         });
 
@@ -175,7 +169,6 @@ public class CardInfo extends AppCompatActivity {
             }
         });
         AlertDialog confirmDeletionDialog = builder.create();
-
         return  confirmDeletionDialog;
     }
 

@@ -5,6 +5,7 @@ package com.example.finalproject.database;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -16,9 +17,11 @@ import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -99,11 +102,8 @@ public class AddTripActivity extends AppCompatActivity {
         pickMedia = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result->{
             if(result.getResultCode() == Activity.RESULT_OK){
                 Intent data = result.getData();
-                Log.e("TakePhotoResult", result.getData().toString());
                 if (data != null && data.getData() != null) {
-                    Log.e("DataIsNotEmpty", data.getData().toString());
                     imageUri = data.getData();
-                    Log.e("imageUri", imageUri.toString());
                     getContentResolver().takePersistableUriPermission(imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     Picasso.get().load(imageUri).into(imageGalleryView);
                 }
@@ -141,7 +141,6 @@ public class AddTripActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("IS_ADD_INSERT", String.valueOf(IS_ADD_INSERT));
                 selectedRadioButton = findViewById(radioGroup.getCheckedRadioButtonId());
                 Trip trip = new Trip();
                 trip.build(nameEditText.getText().toString(), destinationEditText.getText().toString(), selectedRadioButton.getText().toString());
@@ -152,32 +151,36 @@ public class AddTripActivity extends AppCompatActivity {
                 trip.setRating(String.valueOf(ratingBar.getRating()));
                 if(IS_ADD_INSERT == 1){
                     tripViewModel.insert(trip);
-                    Log.e("Am folosit:", "ADD");
                 } else if(IS_ADD_INSERT == 2){
                     trip.setId(bundle.getInt("id"));
                     tripViewModel.update(trip);
-                    Log.e("Am folosit:", "UPDATE");
                 }
-                openAllTripsFragment();
+                openMainActivity();
             }
         });
     }
 
 
     private void openDialog(Button button){
-        DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog dialog = new DatePickerDialog(this,R.style.CustomDatePickerDialog, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 button.setText(String.valueOf(month + 1) + "/" + String.valueOf(dayOfMonth) + "/" + String.valueOf(year));
             }
         }, 2023, 0, 15);
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog1) {
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+            }
+        });
+
+
         dialog.show();
     }
-    private void openAllTripsFragment(){
-        Intent intent = new Intent(this, AllTripsFragment.class);
+    private void openMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-
-
 }

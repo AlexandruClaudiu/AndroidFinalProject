@@ -16,9 +16,8 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     private ImageView imageViewImage;
     private TextView textViewDestination;
     private TextView textViewType;
-
+    private TextView priceTextView;
     private RatingBar ratingBar;
-
     private Button addToFavoriteButton;
 
     public TripViewHolder(@NonNull View cardView){
@@ -29,6 +28,7 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
         textViewType = cardView.findViewById(R.id.type);
         addToFavoriteButton = cardView.findViewById(R.id.addToFavoriteButton);
         ratingBar = cardView.findViewById(R.id.ratingBarCard);
+        priceTextView = cardView.findViewById(R.id.priceTextView);
     }
 
     public TextView getTextViewName() {
@@ -51,5 +51,9 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
 
     public RatingBar getRatingBar() {
         return ratingBar;
+    }
+
+    public TextView getPriceTextView() {
+        return priceTextView;
     }
 }

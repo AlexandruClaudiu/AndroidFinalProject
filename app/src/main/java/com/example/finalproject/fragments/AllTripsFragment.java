@@ -44,12 +44,6 @@ public class AllTripsFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        loadFragment(new NormalTripsFragment());
-    }
-
     private void loadFragment(Fragment fragment){
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

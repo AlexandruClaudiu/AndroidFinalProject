@@ -49,12 +49,6 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
     public TripsAdapter(List<Trip> trips, TripViewModel tripViewModel){
         this.trips = trips;
         this.tripViewModel = tripViewModel;
-        if(this.trips == null){
-            Log.e("TripsAdapterConstructor", "E goala varu");
-        }
-        else{
-            Log.e("TripsAdapterConstructor", this.trips.toString());
-        }
     }
 
     @NonNull
@@ -69,12 +63,12 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
         Trip currentTrip = trips.get(position);
 
         Uri uri = Uri.parse(currentTrip.getImageUri());
-        Log.e("UriCast", uri.toString());
         holder.getTextViewName().setText(currentTrip.getName());
         Picasso.get().load(uri).resize(1920, 1080).into(holder.getImageViewImage());
         holder.getTextViewDestination().setText(currentTrip.getDestination());
         holder.getTextViewType().setText(currentTrip.getTripType());
         holder.getRatingBar().setRating(Float.valueOf(currentTrip.getRating()));
+        holder.getPriceTextView().setText(currentTrip.getPrice() + " €");
 
         if(currentTrip.getFavorite().equals(false)){
             Drawable drawable = ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.add_to_favorite_empty_ic);
@@ -144,9 +138,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripViewHolder> {
             trips = new ArrayList<>();
             return 0;
         }
-
         for(int i = 0; i < trips.size(); i++){
-            Log.e("Id-ul este:",String.valueOf(trips.get(i).getId()));
         }
         return trips.size();
     }

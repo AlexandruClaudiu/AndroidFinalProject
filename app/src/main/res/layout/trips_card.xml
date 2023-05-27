@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/merriweather_bold"
                 android:text="Egypt"
                 android:textColor="@color/white"
@@ -76,7 +76,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toBottomOf="@+id/destination"
-                app:layout_constraintVertical_bias="0.189" />
+                app:layout_constraintVertical_bias="0.072" />
 
             <Button
                 android:id="@+id/addToFavoriteButton"
@@ -99,6 +99,20 @@
                 android:rating="0"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Price"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/type"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/merriweather_bold"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
