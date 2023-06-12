@@ -20,7 +20,7 @@
 - The main app is based on a navigation drawer
 - The list of trips(the 3rd image) uses a Recycler View and the items are made with CardView
 - We can press the FAB button to add a new item
-- We can also long press on each item and an Edit view is opened
+- We can also long press on each item and an Edit page is opened
 <p>
     <img src="https://i.imgur.com/oKsVRCu.png" width="220" height="500" />
     <img src="https://i.imgur.com/Iak1oPC.png" width="220" height="500" />
@@ -28,7 +28,7 @@
 </p> 
 
 #### Adding an item
- - By pressing the FAB button we open an Add view
+ - By pressing the FAB button we open an Add page
  - We can import images from gallery by pressing the select image button
  - When pressing start date or end date buttons an DatePickerDialog is shown
  - And if we press save we add an item to the Recycler View
