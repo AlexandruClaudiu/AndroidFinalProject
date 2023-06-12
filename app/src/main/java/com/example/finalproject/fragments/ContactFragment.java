@@ -42,7 +42,7 @@ public class ContactFragment extends Fragment {
                 {
                     Intent intent = new Intent(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("mailto:"));
-                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"claudiu_108@yahoo.com"});
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tournal@yahoo.com"});
                     intent.putExtra(Intent.EXTRA_SUBJECT, subjectEditText.getText().toString());
                     intent.putExtra(Intent.EXTRA_TEXT, messageEditText.getText().toString());
                     if(intent.resolveActivity(view.getContext().getPackageManager())!=null){
@@ -59,7 +59,7 @@ public class ContactFragment extends Fragment {
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "0770157596"));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "0700000000"));
                 startActivity(intent);
             }
         });
